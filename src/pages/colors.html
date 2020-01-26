@@ -1,0 +1,83 @@
+<style>
+  .container {
+    position: relative;
+    height: 60vh;
+  }
+
+  .img {
+    height: 100%;
+    background: url(https://res.cloudinary.com/silvenon/image/upload/v1/kitten.jpg) center / cover no-repeat;
+    filter: url(#grayscale) url(#duotone);
+  }
+
+  .box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .pink {
+    background: #f32887;
+  }
+
+  .yellow {
+    background: #faf07a;
+  }
+
+  .blue {
+    background: #faf07a;
+  }
+
+  .text {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 5rem;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  .text::after {
+    content: "";
+    display: block;
+    width: 20rem;
+    margin: 0 auto;
+    border-bottom: 0.05em solid currentColor;
+  }
+</style>
+
+<!-- https://kazzkiq.github.io/svg-color-filter/ -->
+
+<svg class="sr-only">
+  <filter id="bg-out">
+    <feColorMatrix
+    type="matrix"
+    values="1   0   0   0   0
+            0   1   0   0   0
+            0   0   1   0   0
+           -1.5 0   0   1   0 " />
+  </filter>
+  <filter id="grayscale">
+    <feColorMatrix
+    type="matrix"
+    values="0   0   1   0   0
+            0   0   1   0   0
+            0   0   1   0   0
+            0   0   0   1   0 " />
+  </filter>
+  <filter id="duotone">
+    <feComponentTransfer color-interpolation-filters="sRGB">
+      <feFuncR type="table" tableValues=".996078431  .984313725"></feFuncR>
+      <feFuncG type="table" tableValues=".125490196  .941176471"></feFuncG>
+      <feFuncB type="table" tableValues=".552941176  .478431373"></feFuncB>
+    </feComponentTransfer>
+  </filter>
+</svg>
+
+<div class="container">
+  <div class="img"></div>
+  <h2 class="text">Kittens for everybody</h2>
+</div>

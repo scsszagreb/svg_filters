@@ -1,0 +1,32 @@
+<style>
+  .container {
+    position: relative;
+    height: 60vh;
+  }
+
+  .img {
+    height: 100%;
+    background: url(https://res.cloudinary.com/silvenon/image/upload/v1/kitten.jpg) center / cover no-repeat;
+    margin: 0 1rem;
+    filter: url(#drop-shadow);
+    border: 1rem solid #fff;
+    border-radius: 3rem;
+  }
+</style>
+
+<svg class="sr-only">
+  <filter id="drop-shadow">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="2 5" result="DROP"></feGaussianBlur>
+    <feFlood flood-color="#aaa" result="COLOR"></feFlood>
+    <feComposite in="COLOR" in2="DROP" operator="in" result="SHADOW"></feComposite>
+    <feOffset in="SHADOW" dx="0" dy="8" result="DROPSHADOW"></feOffset>
+    <feMerge>
+      <feMergeNode in="DROPSHADOW"></feMergeNode>
+      <feMergeNode in="SourceGraphic"></feMergeNode>
+    </feMerge>
+  </filter>
+</svg>
+
+<div class="container">
+  <div class="img"></div>
+</div>
